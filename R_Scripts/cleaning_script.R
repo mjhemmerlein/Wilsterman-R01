@@ -1,14 +1,14 @@
-setwd("/Users/kwilst/Documents/Research/PlacentalAtlas/") 
+# setwd("/Users/kwilst/Documents/Research/PlacentalAtlas/") 
 
 library(dplyr)
 library(zoo)
 
-Tb <- read.csv("tempdata_6.28.23.csv", header= TRUE)
+Tb <- read.csv("Raw_Data/tempdata_6.28.23.csv", header= TRUE)
 
 Tb$Tag.ID <- as.factor(Tb$Tag.ID)
 Tb$DT <- paste(Tb$Date, Tb$Time)
  
-PTBlist <- read.csv("PTBlist.csv", header= TRUE)
+PTBlist <- read.csv("Raw_Data/PTBlist.csv", header= TRUE)
 ##the above line is where I pulled TagIDs from ... The system sometimes reads nonsense,
 ##so you really do need a "correct" reference file to work off of
 ##you can see the "non\sense" lines in the file by running unique(Tb$Tag.ID)
@@ -17,7 +17,7 @@ PTBlist <- read.csv("PTBlist.csv", header= TRUE)
 ##Tag.ID in it that can be referenced by the file. You will record Tag.ID when you PIT Tag individuals. 
 
 ##subset full datasheet for SINGLE tag ID
-h <- filter(Tb, Tag.ID == PTBlist$Ptcode[1])
+h <- filter(Tb, Tag.ID == PTBlist$Ptcode[2])
 
 window_width <- 11
 
