@@ -5,7 +5,6 @@ library(lubridate)
 library(readxl)
 library(cetcolor)
 
-
 # Read in data
 Tb <- read.csv("Raw_Data/2025_01_09.csv", header = TRUE)
 Tb <- rbind(Tb, read.csv("Raw_Data/2025_01_16.csv", header = TRUE)) 
@@ -185,6 +184,8 @@ ggplot(data = unnested_results[which(unnested_results$keep_or_discard=="Keep"),]
   geom_vline(data = start_dates, aes(xintercept = as.POSIXct(day_7)), 
              color = "red", linetype = "solid") +
   facet_wrap(~ Female)
+
+
 
 ggplot(data = unnested_results[which(unnested_results$keep_or_discard=="Keep"),]) +
   geom_line(aes(x = TimeStamp, y = Temp)) +
